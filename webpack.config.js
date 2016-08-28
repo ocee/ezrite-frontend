@@ -11,7 +11,7 @@ var config = {
     },
     output: {
         path: BUILD_DIR,
-        filename: 'app/[name]/[name].js'
+        filename: '[name].js'
     },
     module: {
         loaders: [{
@@ -26,7 +26,7 @@ var config = {
             loader: 'imports-loader?jQuery=jquery'
         }, {
             test: /\.(png|jpg)$/,
-            loader: 'url-loader?limit=8192'
+            loader: 'url-loader?limit=8192&name=[name].[ext]'
         }, {
             test: /\.(less|css)$/,
             loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
@@ -45,7 +45,7 @@ var config = {
         }]
     },
     plugins: [
-        new ExtractTextPlugin("style/[name]/[name].css")
+        new ExtractTextPlugin("[name].css")
     ]
 };
 

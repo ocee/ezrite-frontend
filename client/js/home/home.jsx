@@ -3,14 +3,17 @@ import {render} from 'react-dom';
 import "../../style/home.less";
 import 'file-loader?name=[name].[ext]!../../template/home.html';
 
-import AwesomeComponent from '../common/component.jsx';
+import Header from './header.jsx'
+import Body from './body.jsx'
+import Footer from './footer.jsx'
 
 class App extends React.Component {
   render () {
     return (
       <div>
-        <p> Hello React!</p>
-        <AwesomeComponent />
+        <Header />
+        <Body />
+        <Footer />
       </div>
     );
   }
