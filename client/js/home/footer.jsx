@@ -1,9 +1,9 @@
-import React from 'react';
-import ClassNames from 'classnames';
+import React from 'react'
+import ClassNames from 'classnames'
 
 class Footer extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {
@@ -34,8 +34,8 @@ class Footer extends React.Component {
                     </div>
                 </div>
             </footer>
-        );
+        )
     }
 }
 
-export default Footer;
+export default Footer

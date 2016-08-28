@@ -1,9 +1,9 @@
-import React from 'react';
-import ClassNames from 'classnames';
+import React from 'react'
+import ClassNames from 'classnames'
 
 class Body extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {
@@ -18,7 +18,7 @@ class Body extends React.Component {
                                 <hr className="intro-divider"/>
                                 <ul className="list-inline intro-social-buttons">
                                     <div className="col-sm-offset-2 col-sm-8 input-group input-group-lg">
-                                      <input type="text" className="form-control" placeholder="Username" aria-describedby="sizing-addon1"/>
+                                      <input type="text" className="form-control" placeholder="Search..." aria-describedby="sizing-addon1"/>
                                       <span className="input-group-btn" id="sizing-addon1">
                                         <button className="btn btn-secondary" type="button">Find</button>
                                       </span>
@@ -29,8 +29,8 @@ class Body extends React.Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default Body;
+export default Body

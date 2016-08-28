@@ -1,5 +1,5 @@
-import React from 'react';
-import ClassNames from 'classnames';
+import React from 'react'
+import ClassNames from 'classnames'
 
 class Header extends React.Component {
   constructor(props) {
