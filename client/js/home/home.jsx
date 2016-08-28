@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import "../../style/home.less";
-import 'file?name=[name].[ext]!../../template/home.html';
+import 'file-loader?name=[name].[ext]!../../template/home.html';
 
 import AwesomeComponent from '../common/component.jsx';
 
