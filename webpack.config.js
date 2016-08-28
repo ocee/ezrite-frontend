@@ -7,7 +7,7 @@ var APP_DIR = path.resolve(__dirname, 'client');
 
 var config = {
   entry: {
-    home: APP_DIR + '/js/home.jsx'
+    home: APP_DIR + '/js/home/home.jsx'
     },
   output: {
     path: BUILD_DIR,

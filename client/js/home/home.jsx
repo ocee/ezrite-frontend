@@ -1,12 +1,9 @@
 import React from 'react';
 import {render} from 'react-dom';
-import "./home.less";
-import 'file?name=app/[name]/[name].[ext]!../template/home.html';
+import "../../style/home.less";
+import 'file?name=[name].[ext]!../../template/home.html';
 
-
-// import "style-loader!css-loader!less-loader!./home.less";
-
-import AwesomeComponent from './component.jsx';
+import AwesomeComponent from '../common/component.jsx';
 
 class App extends React.Component {
   render () {
