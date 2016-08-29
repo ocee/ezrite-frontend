@@ -20,7 +20,7 @@ class Body extends React.Component {
 
     render() {
         const {reducer} = this.props
-        
+
         return (
             <div className="intro-header">
                 <div className="container">
@@ -34,7 +34,7 @@ class Body extends React.Component {
                                     <div className="col-sm-offset-2 col-sm-8 input-group input-group-lg">
                                       <input type="text" className="form-control" placeholder="Search..." aria-describedby="sizing-addon1" onChange={this.onSearchTextChange}/>
                                       <span className="input-group-btn" id="sizing-addon1">
-                                        <button className="btn btn-secondary" type="button">Find</button>
+                                        <button className="btn btn-secondary" type="button" onClick={this.onSubmitSearch}>Find</button>
                                       </span>
                                     </div>
                                 </ul>

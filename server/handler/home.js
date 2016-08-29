@@ -1,4 +1,4 @@
-let HomeApp = require('./../template/index.js')
+let HomeApp = require('./../template/home.js')
 
 let index = (router) => {
   router.get('/home', function*(next) {

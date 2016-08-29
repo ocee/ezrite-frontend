@@ -1,4 +1,4 @@
 module.exports = function(router){
-  require('./index')(router);
+  require('./home')(router);
   require('./search')(router);
 };
