@@ -1,19 +1,27 @@
-'use strict'
-var React = require('react');
-var ReactDOMServer = require('react-dom/server')
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
 
+class HomeApp extends React.Component {
+  render() {
+    return (
+    <html>
+      <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="home_app.css"/>
+        <title>Hello React!</title>
+      </head>
+      <body>
+        <div id="app"></div>
+        <script src="home_app.js"></script>
+      </body>
+    </html>)
+  }
+}
 
-module.exports = {
-  pageTemplate: function(options) {
-    let app = require('../../public/js/helloworld');
-    let head = React.DOM.head(null);
-    let body = React.DOM.body(null, app);
-    let html = ReactDOMServer.renderToStaticMarkup(React.DOM.html(null, body));
-
-    return html;
-  },
-  render: function(options) {
-    let context = this;
-    let markup = context.pageTemplate(options);
+var homeApp = {
+  pageTemplate: function() {
+    return ReactDOMServer.renderToStaticMarkup(<HomeApp />)
   }
 };
+
+module.exports = homeApp

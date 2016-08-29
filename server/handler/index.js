@@ -1,13 +1,15 @@
-'use strict'
-module.exports = function(router) {
+let HomeApp = require('./../template/index.js')
+
+let index = (router) => {
   router.get('/home', function*(next) {
     try {
-      let template = require('../template/index');
-      let html = template.render();
-      this.response.type = 'text/html';
-      this.body = html;
+      this.response.type = 'text/html'
+      this.body = HomeApp.pageTemplate()
+
     } catch (error) {
       throw error;
     }
-  });
+  })
 }
+
+module.exports = index

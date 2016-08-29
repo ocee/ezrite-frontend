@@ -13,14 +13,14 @@ class Body extends React.Component {
       action.searchText(event.target.value)
     }
 
-    onSearchTextChange(event){
-      const {action} = this.props
-      action.submitSearch(event.target.value)
+    onSubmitSearch(event){
+      const {action, reducer} = this.props
+      action.submitSearch(reducer.searchText)
     }
 
     render() {
         const {reducer} = this.props
-        console.log(reducer.searchText)
+        
         return (
             <div className="intro-header">
                 <div className="container">
