@@ -1,31 +1,39 @@
 import 'babel-polyfill'
-import React from 'react'
-import {render} from 'react-dom'
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
-import SearchReducer from './../reducer/search_reducer'
-import "../../style/home.less"
-import 'file-loader?name=[name].[ext]!../../template/home.html'
-
+import React, {PropTypes} from 'react'
+import { connect } from 'react-redux'
 import Header from './header.jsx'
 import Body from './body.jsx'
 import Footer from './footer.jsx'
+import SearchAction from './../action/search_action'
 
-let store = createStore(SearchReducer)
-
-class App extends React.Component {
+class Home extends React.Component {
     render() {
-        return (
-            <Provider store={store}>
-                <div>
-                    <Header/>
-                    <Body/>
-                    <Footer/>
-                </div>
-            </Provider>
-        );
+      const {reducer, action} = this.props
+      return (
+          <div>
+                <Header reducer={reducer} action={action}/>
+                <Body reducer={reducer} action={action}/>
+                <Footer reducer={reducer} action={action}/>
+          </div>
+        )
     }
 }
 
-render(
-    <App/>, document.getElementById('app'))
+Home.propTypes = {
+  reducer: PropTypes.object.isRequired,
+  action: PropTypes.object.isRequired
+}
+
+function mapStateToProps(state){
+  return{
+    reducer: state
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    action: new SearchAction(dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

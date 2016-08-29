@@ -1,14 +1,9 @@
-import { connect } from 'react-redux'
-import { addTodo } from '../actions'
-
-let SearchAction = ({ dispatch }) => {
+let SearchAction = (dispatch) => {
   return {
-    searchJobs: function(searchText){
-      dispatch({type: 'SEARCH_JOB', data:{text: searchText}}) 
+    searchText: function(searchText){
+      dispatch({type: 'SEARCH_JOB', data:{searchText: searchText}})
     }
   }
 }
-
-SearchAction = connect()(SearchAction)
 
 export default SearchAction
