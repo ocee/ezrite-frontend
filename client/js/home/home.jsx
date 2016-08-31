@@ -1,9 +1,9 @@
 import 'babel-polyfill'
 import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
-import Header from './header.jsx'
+import Header from './../common/header.jsx'
 import Body from './body.jsx'
-import Footer from './footer.jsx'
+import Footer from './../common/footer.jsx'
 import SearchAction from './../action/search_action'
 
 class Home extends React.Component {
