@@ -6,7 +6,7 @@ class HomeApp extends React.Component {
     return (
     <html>
       <head>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <link rel="stylesheet" type="text/css" href="home_app.css"/>
         <title>Hello React!</title>
       </head>

@@ -30,6 +30,9 @@ class Header extends React.Component {
                     <li>
                         <a href="#contact">Contact</a>
                     </li>
+                    <li>
+                      <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                    </li>
                 </ul>
             </div>
         </div>

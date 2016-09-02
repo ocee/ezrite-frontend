@@ -23,7 +23,7 @@ var config = {
             }
         }, {
             test: /bootstrap\/js\//,
-            loader: 'imports-loader?jQuery=jquery'
+            loader: 'imports-loader?jQuery=jquery,$=jquery,this=>window'
         }, {
             test: /\.(png|jpg)$/,
             loader: 'url-loader?limit=8192&name=[name].[ext]'
