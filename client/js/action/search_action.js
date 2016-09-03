@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 let SearchAction = (dispatch) => {
   return {
     searchText: function(searchText){
@@ -15,10 +17,26 @@ let SearchAction = (dispatch) => {
     submitSearch: function(searchText){
       window.location = 'search?q=' + searchText
     },
-    submitRegister: function(searchText){
+    submitRegister: function(userData){
+      // var options = {
+      //   url: '/api/user/register',
+      //   headers: { 'User-Agent': 'request' },
+      //   json: userData
+      // };
+
+      // $.post('/api/user/register', userData, (event)=>{
+      //
+      // }, 'json')
+      $.ajax({
+        url: '/api/user/register',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify(userData)
+      })
 
     },
-    submitLogin: function(searchText){
+    submitLogin: function(){
 
     },
     changeLoginView: function(view){

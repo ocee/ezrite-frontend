@@ -2,7 +2,7 @@
   "server":{
     "port": 3333
   },
-  "api": {
-      "connection_url": "http:localhost:3000"
+  "postgres": {
+      "connection_string": "postgres://tuan@localhost:5432/ezrite"
   }
 }

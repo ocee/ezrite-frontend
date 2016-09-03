@@ -1,6 +1,6 @@
 var userService = require("./../service/user");
 var koaBody = require('koa-body')();
-var util = require('./../common/utils');
+var util = require('./../../common/utils');
 
 module.exports = function(router) {
   router.post('/api/user/login', koaBody, function*(next) {

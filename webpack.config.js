@@ -7,7 +7,7 @@ var APP_DIR = path.resolve(__dirname, 'client');
 
 var config = {
     entry: {
-        home_app: APP_DIR + '/js/home/home_app.jsx'
+        home_app: ['babel-polyfill', APP_DIR + '/js/home/home_app.jsx']
     },
     output: {
         path: BUILD_DIR,
@@ -15,9 +15,10 @@ var config = {
     },
     module: {
         loaders: [{
-            test: /\.jsx?/,
+            test: /\.jsx?$/,
             include: APP_DIR,
             loader: 'babel',
+            exclude: /node_modules/,
             query: {
                 presets: ['es2015', 'react'],
             }

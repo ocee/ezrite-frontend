@@ -25,8 +25,8 @@ class LoginModal extends React.Component {
     }
 
     onRegisterSubmit(){
-      const{action} = this.props
-      action.submitRegister()
+      const{action, reducer} = this.props
+      action.submitRegister(reducer.userData)
     }
 
     onLoginSubmit(){
@@ -59,7 +59,7 @@ class LoginModal extends React.Component {
                                   <input type="text" name="name" placeholder="Name" onChange={this.onNameChange}/>
                                   <input type="text" name="email" placeholder="Email" onChange={this.onEmailChange}/>
                                   <input type="password" name="pass" placeholder="Password" onChange={this.onPasswordChange}/>
-                                  <input type="submit" name="register" className="login loginmodal-submit" value="Register" onClick={this.onRegisterSubmit}/>
+                                  <input type="button" name="register" className="login loginmodal-submit" value="Register" onClick={this.onRegisterSubmit}/>
                               </form>
                             </span>,
           loginContainer = <span>
@@ -68,7 +68,7 @@ class LoginModal extends React.Component {
                                 <form>
                                     <input type="text" name="email" placeholder="Email" onChange={this.onEmailChange}/>
                                     <input type="password" name="pass" placeholder="Password" onChange={this.onPasswordChange}/>
-                                    <input type="submit" name="login" className="login loginmodal-submit" value="Login" onClick={this.onLoginSubmit}/>
+                                    <input type="button" name="login" className="login loginmodal-submit" value="Login" onClick={this.onLoginSubmit}/>
                                 </form>
                               </span>,
           loginLink = <a href="#" onClick={this.onLoginClick}>Login</a>,
