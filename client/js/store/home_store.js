@@ -2,12 +2,13 @@ import { createStore, applyMiddleware, compose } from 'redux'
 // import thunk from 'redux-thunk'
 // import createLogger from 'redux-logger'
 // import api from '../middleware/api'
-import rootReducer from './../reducer/search_reducer'
+// import rootReducer from './../reducer/search_reducer'
+import SearchReducer from './../reducer/search_reducer'
 // import DevTools from '../containers/DevTools'
 
 export default function configureStore(preloadedState) {
   const store = createStore(
-    rootReducer,
+    SearchReducer,
     preloadedState
   )
 

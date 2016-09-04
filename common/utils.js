@@ -59,5 +59,8 @@ module.exports = {
   },
   getUuid: function(){
     return uuid.v4();
+  },
+  safeStringify: function(obj){
+    return JSON.stringify(obj).replace(/<\/script/g, '<\\/script').replace(/<!--/g, '<\\!--')
   }
 }
