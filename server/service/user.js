@@ -28,9 +28,9 @@ module.exports = {
 
     try {
       var result = null,
-      sqlStatement = `INSERT INTO ezrite_user (ezrite_user_id, email, password, profile) VALUES ($1, $2, $3, $4);`;
+      sqlStatement = `INSERT INTO ezrite_user (ezrite_user_id, email, password, profile) VALUES ($1, $2, $3, $4) RETURNING ezrite_user_id, email, profile;`;
       result = yield db.executeScript(sqlStatement, [user_id, email, pwHash, profile]);
-      return;
+      return result[0];
     } catch (error) {
       throw error;
     }

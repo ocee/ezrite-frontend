@@ -1,27 +1,37 @@
-var userService = require("./../service/user");
-var koaBody = require('koa-body')();
-var util = require('./../../common/utils');
+import userService from './../service/user'
+import util from './../../common/utils'
 
 module.exports = function(router) {
-  router.post('/api/user/login', koaBody, function*(next) {
+  router.post('/api/user/login', function*(next) {
     try {
-      var pw = this.request.body.password,
-      email = this.request.body.email;
-      var user = yield userService.getUserByEmail(email);
-      var isValid = yield util.validatePasswordHash(pw, user.password);
-      this.body = isValid;
+      let pw = this.request.body.password,
+      email = this.request.body.email,
+      user = yield userService.getUserByEmail(email),
+      isValid = yield util.validatePasswordHash(pw, user.password)
+
+      if(user){
+          delete user.password
+          this.session.user = user
+          this.status = 200
+          this.body = user
+      }else{
+        this.status = 404
+      }
+
     } catch (error) {
       throw error;
     }
   });
-  router.post('/api/user/register', koaBody, function*(next) {
+  router.post('/api/user/register', function*(next) {
     try {
-      var pw = this.request.body.password,
+      let pw = this.request.body.password,
       email = this.request.body.email,
       user = yield userService.getUserByEmail(email),
       uuid = util.getUuid(),
       result = null,
+      profile = this.request.body.profile,
       pwHash = null;
+
       if(user){
         this.body = "user already exists.";
         return this.response.status = 409;
@@ -29,8 +39,9 @@ module.exports = function(router) {
 
       pwHash = yield util.hashPassword(pw);
       console.log(pwHash);
-      result = yield userService.createUser(uuid,email,pwHash, null);
-      this.response.status = 204;
+      result = yield userService.createUser(uuid,email,pwHash,profile);
+      this.response.status = 200;
+      this.body = result
     } catch (error) {
       throw error;
     }

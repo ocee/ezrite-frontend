@@ -5,42 +5,58 @@ let SearchAction = (dispatch) => {
     searchText: function(searchText){
       dispatch({type: 'SEARCH_JOB', data:{searchText: searchText}})
     },
-    userNameChange: function(name){
-      dispatch({type: 'NAME_CHANGE', data:{name: name}})
+    registrationNameChange: function(name){
+      dispatch({type: 'REGISTRATION_NAME_CHANGE', data:{name: name}})
     },
-    userEmailChange: function(email){
-      dispatch({type: 'EMAIL_CHANGE', data:{email: email}})
+    registrationEmailChange: function(email){
+      dispatch({type: 'REGISTRATION_EMAIL_CHANGE', data:{email: email}})
     },
-    userPasswordChange: function(password){
-      dispatch({type: 'PASSWORD_CHANGE', data:{password: password}})
+    registrationPasswordChange: function(password){
+      dispatch({type: 'REGISTRATION_PASSWORD_CHANGE', data:{password: password}})
+    },
+    loginEmailChange: function(email){
+      dispatch({type: 'LOGIN_EMAIL_CHANGE', data:{email: email}})
+    },
+    loginPasswordChange: function(password){
+      dispatch({type: 'LOGIN_PASSWORD_CHANGE', data:{password: password}})
     },
     submitSearch: function(searchText){
       window.location = 'search?q=' + searchText
     },
-    submitRegister: function(userData){
-      // var options = {
-      //   url: '/api/user/register',
-      //   headers: { 'User-Agent': 'request' },
-      //   json: userData
-      // };
-
-      // $.post('/api/user/register', userData, (event)=>{
-      //
-      // }, 'json')
+    submitRegister: function(registrationData){
       $.ajax({
         url: '/api/user/register',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        data: JSON.stringify(userData)
+        data: JSON.stringify({
+          email: registrationData.email,
+          password: registrationData.password,
+          profile: {name: registrationData.name}
+
+        }),
+        success: response => {
+          console.log(response)
+          dispatch({type: 'LOGIN_SUCCESS', data: response})
+        }
       })
 
     },
-    submitLogin: function(){
-
-    },
-    changeLoginView: function(view){
-      dispatch({type: 'CHANGE_LOGIN_VIEW', data:{view: view}})
+    submitLogin: function(loginData){
+      $.ajax({
+        url: '/api/user/login',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify({
+          email: loginData.email,
+          password: loginData.password
+        }),
+        success: response => {
+          console.log(response)
+          dispatch({type: 'LOGIN_SUCCESS', data: response})
+        }
+      })
     }
   }
 }

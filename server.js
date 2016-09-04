@@ -6,6 +6,7 @@ var api = router();
 var serve = require('koa-static');
 var session = require('koa-generic-session');
 var redisStore = require('koa-redis');
+var bodyParser = require('koa-bodyparser');
 
 //initialize handlers
 require('./server/handler/main')(api);
@@ -18,6 +19,7 @@ app.use(session({
   })
 }));
 
+app.use(bodyParser());
 app.use(api.routes());
 app.use(api.allowedMethods());
 // or use absolute paths

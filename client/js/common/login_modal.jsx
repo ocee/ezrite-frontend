@@ -5,69 +5,85 @@ class LoginModal extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state = {view: 'login'};
         this.onRegisterClick = this.onRegisterClick.bind(this)
         this.onLoginClick = this.onLoginClick.bind(this)
         this.onRegisterSubmit = this.onRegisterSubmit.bind(this)
         this.onLoginSubmit = this.onLoginSubmit.bind(this)
         this.onNameChange = this.onNameChange.bind(this)
-        this.onEmailChange = this.onEmailChange.bind(this)
-        this.onPasswordChange = this.onPasswordChange.bind(this)
+        this.onRegistrationEmailChange = this.onRegistrationEmailChange.bind(this)
+        this.onRegistrationPasswordChange = this.onRegistrationPasswordChange.bind(this)
+        this.onLoginEmailChange = this.onLoginEmailChange.bind(this)
+        this.onLoginPasswordChange = this.onLoginPasswordChange.bind(this)
+        this.onSetView = this.onSetView.bind(this)
     }
 
     onRegisterClick(){
-      const{action} = this.props
-      action.changeLoginView('register')
+      this.setState({view: 'register'});
     }
 
     onLoginClick(){
-      const{action} = this.props
-      action.changeLoginView('login')
+      this.setState({view: 'login'});
     }
 
     onRegisterSubmit(){
       const{action, reducer} = this.props
-      action.submitRegister(reducer.userData)
+      action.submitRegister(reducer.registrationData)
     }
 
     onLoginSubmit(){
-      const{action} = this.props
-      action.submitLogin()
+      const{action, reducer} = this.props
+      action.submitLogin(reducer.loginData)
     }
 
     onNameChange(event){
       const{action} = this.props
-      action.userNameChange(event.target.value)
+      action.registrationNameChange(event.target.value)
     }
 
-    onEmailChange(event){
+    onRegistrationEmailChange(event){
       const{action} = this.props
-      action.userEmailChange(event.target.value)
+      action.registrationEmailChange(event.target.value)
     }
 
-    onPasswordChange(event){
+    onRegistrationPasswordChange(event){
       const{action} = this.props
-      action.userPasswordChange(event.target.value)
+      action.registrationPasswordChange(event.target.value)
+    }
+
+    onLoginEmailChange(event){
+      const{action} = this.props
+      action.loginEmailChange(event.target.value)
+    }
+
+    onLoginPasswordChange(event){
+      const{action} = this.props
+      action.loginPasswordChange(event.target.value)
+    }
+
+    onSetView(view){
+      this.setState({view: view});
     }
 
     render() {
       const {userData} = this.props.reducer
       console.log(this.props.reducer)
       let registerContainer = <span>
-                              <h1>Register</h1>
+                              <h1>Register A New Account</h1>
                               <br/>
                               <form>
                                   <input type="text" name="name" placeholder="Name" onChange={this.onNameChange}/>
-                                  <input type="text" name="email" placeholder="Email" onChange={this.onEmailChange}/>
-                                  <input type="password" name="pass" placeholder="Password" onChange={this.onPasswordChange}/>
+                                  <input type="text" name="email" placeholder="Email" onChange={this.onRegistrationEmailChange}/>
+                                  <input type="password" name="pass" placeholder="Password" onChange={this.onRegistrationPasswordChange}/>
                                   <input type="button" name="register" className="login loginmodal-submit" value="Register" onClick={this.onRegisterSubmit}/>
                               </form>
                             </span>,
           loginContainer = <span>
-                                <h1>Login to Your Account</h1>
+                                <h1>Login To Your Account</h1>
                                 <br/>
                                 <form>
-                                    <input type="text" name="email" placeholder="Email" onChange={this.onEmailChange}/>
-                                    <input type="password" name="pass" placeholder="Password" onChange={this.onPasswordChange}/>
+                                    <input type="text" name="email" placeholder="Email" onChange={this.onLoginEmailChange}/>
+                                    <input type="password" name="pass" placeholder="Password" onChange={this.onLoginPasswordChange}/>
                                     <input type="button" name="login" className="login loginmodal-submit" value="Login" onClick={this.onLoginSubmit}/>
                                 </form>
                               </span>,
@@ -76,7 +92,7 @@ class LoginModal extends React.Component {
           userContainer = null,
           userLink = null
 
-          if(userData.view === 'login'){
+          if(this.state.view === 'login'){
             userContainer = loginContainer
             userLink = registerLink
           }else{
