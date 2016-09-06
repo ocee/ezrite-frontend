@@ -9,11 +9,16 @@ const SearchReducer = (state = searchReducer, action) => {
   let currentState = null;
 
   switch (action.type) {
+    case 'LOGOUT_SUCCESS':
+      state.userData = null
+      return Object.assign({},state)
+    case 'REGISTER_SUCCESS':
     case 'LOGIN_SUCCESS':
       currentState = state.userData ? state.userData : {}
       return Object.assign({},state , {userData: Object.assign(currentState, action.data)})
     case 'SEARCH_JOB':
-      return Object.assign({},state , Object.assign(state.searchData, {searchData: action.data}))
+      currentState = state.searchData ? state.searchData : {}
+      return Object.assign({},state , Object.assign(currentState, {searchData: action.data}))
     case 'REGISTRATION_NAME_CHANGE':
     case 'REGISTRATION_EMAIL_CHANGE':
     case 'REGISTRATION_PASSWORD_CHANGE':

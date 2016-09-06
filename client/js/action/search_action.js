@@ -36,8 +36,7 @@ let SearchAction = (dispatch) => {
 
         }),
         success: response => {
-          console.log(response)
-          dispatch({type: 'LOGIN_SUCCESS', data: response})
+          dispatch({type: 'REGISTER_SUCCESS', data: response})
         }
       })
 
@@ -53,8 +52,16 @@ let SearchAction = (dispatch) => {
           password: loginData.password
         }),
         success: response => {
-          console.log(response)
           dispatch({type: 'LOGIN_SUCCESS', data: response})
+        }
+      })
+    },
+    submitSignOut: function(){
+      $.ajax({
+        url: '/api/user/logout',
+        type: 'GET',
+        success: response => {
+          dispatch({type: 'LOGOUT_SUCCESS'})
         }
       })
     }

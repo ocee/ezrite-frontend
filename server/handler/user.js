@@ -2,6 +2,14 @@ import userService from './../service/user'
 import util from './../../common/utils'
 
 module.exports = function(router) {
+  router.get('/api/user/logout', function*(next) {
+    try {
+      this.session.user = null
+      this.status = 200
+    } catch (error) {
+      throw error;
+    }
+  });
   router.post('/api/user/login', function*(next) {
     try {
       let pw = this.request.body.password,

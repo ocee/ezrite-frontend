@@ -5,6 +5,12 @@ import Humanname from 'humanname'
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.onSignOut = this.onSignOut.bind(this)
+  }
+
+  onSignOut(){
+    const {action} = this.props
+    action.submitSignOut()
   }
 
   render() {
@@ -19,7 +25,10 @@ class Header extends React.Component {
     }else{
       let firstName = Humanname.parse(userData.profile.name).firstName
       userContainer = <li>
-                        <a href="#" >{firstName}</a>
+                        <a href="#" id="dropdownMenu1" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{firstName}</a>
+                          <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#" onClick={this.onSignOut}>Sign Out</a></li>
+                          </ul>
                       </li>
     }
 

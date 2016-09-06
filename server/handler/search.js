@@ -1,10 +1,10 @@
 import SearchApp from './../template/search.js'
+import userService from './../service/user'
 
 let index = (router) => {
-  router.get('/search', function*(next) {
+  router.get('/api/search', function*(next) {
     try {
-      this.response.type = 'text/html'
-      this.body = SearchApp.pageTemplate()
+
 
     } catch (error) {
       throw error;
