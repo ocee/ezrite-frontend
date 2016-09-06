@@ -7,6 +7,7 @@ var serve = require('koa-static');
 var session = require('koa-generic-session');
 var redisStore = require('koa-redis');
 var bodyParser = require('koa-bodyparser');
+require('koa-qs')(app)
 
 //initialize handlers
 require('./server/handler/main')(api);

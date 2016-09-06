@@ -6,7 +6,6 @@ import {Provider} from 'react-redux'
 import configureStore from './../store/home_store'
 // import SearchReducer from './../reducer/search_reducer'
 import "../../style/home.less"
-import 'file-loader?name=[name].[ext]!../../template/home.html'
 
 import Home from './home.jsx'
 

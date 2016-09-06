@@ -15,7 +15,7 @@ class Body extends React.Component {
 
     onSubmitSearch(event){
       const {action, reducer} = this.props
-      action.submitSearch(reducer.searchText)
+      action.submitSearch(reducer.searchData.searchText)
     }
 
     render() {

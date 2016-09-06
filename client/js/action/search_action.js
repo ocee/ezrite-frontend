@@ -21,7 +21,15 @@ let SearchAction = (dispatch) => {
       dispatch({type: 'LOGIN_PASSWORD_CHANGE', data:{password: password}})
     },
     submitSearch: function(searchText){
-      window.location = 'search?q=' + searchText
+      $.ajax({
+        url: '/api/search?q=' + encodeURI(searchText),
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: response => {
+          dispatch({type: 'SEARCH_RESULTS', data: {searchResult:response}})
+        }
+      })
     },
     submitRegister: function(registrationData){
       $.ajax({

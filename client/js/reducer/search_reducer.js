@@ -9,6 +9,9 @@ const SearchReducer = (state = searchReducer, action) => {
   let currentState = null;
 
   switch (action.type) {
+    case 'SEARCH_RESULTS':
+      currentState = state.searchData ? state.searchData : {}
+      return Object.assign({},state , Object.assign(currentState, {searchData: action.data}))
     case 'LOGOUT_SUCCESS':
       state.userData = null
       return Object.assign({},state)
