@@ -2,13 +2,17 @@ let searchReducer = {
   searchData: null,
   registrationData: null,
   loginData: null,
-  userData: null
+  userData: null,
+  viewData: null,
 }
 
 const SearchReducer = (state = searchReducer, action) => {
   let currentState = null;
 
   switch (action.type) {
+    case 'VIEW_CHANGE':
+      currentState = state.viewData ? state.viewData : {}
+      return Object.assign({},state , Object.assign(currentState, {viewData: action.data}))
     case 'SEARCH_RESULTS':
       currentState = state.searchData ? state.searchData : {}
       return Object.assign({},state , Object.assign(currentState, {searchData: action.data}))

@@ -27,6 +27,7 @@ let SearchAction = (dispatch) => {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: response => {
+          dispatch({type: 'VIEW_CHANGE', data: {view: 'search'}})
           dispatch({type: 'SEARCH_RESULTS', data: {searchResult:response}})
         }
       })
