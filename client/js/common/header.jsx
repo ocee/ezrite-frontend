@@ -14,8 +14,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const {reducer} = this.props,
-    {userData} = reducer
+    const {userData} = this.props
     let userContainer = null
 
     if(!userData){

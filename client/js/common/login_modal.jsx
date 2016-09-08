@@ -27,13 +27,13 @@ class LoginModal extends React.Component {
     }
 
     onRegisterSubmit(){
-      const{action, reducer} = this.props
-      action.submitRegister(reducer.SearchReducer.registrationData)
+      const{action, registrationData} = this.props
+      action.submitRegister(registrationData)
     }
 
     onLoginSubmit(){
-      const{action, reducer} = this.props
-      action.submitLogin(reducer.SearchReducer.loginData)
+      const{action, loginData} = this.props
+      action.submitLogin(loginData)
     }
 
     onNameChange(event){
@@ -66,8 +66,8 @@ class LoginModal extends React.Component {
     }
 
     render() {
-      const {userData} = this.props.reducer
-      console.log(this.props.reducer)
+      const {userData} = this.props
+      
       let registerContainer = <span>
                               <h1>Register A New Account</h1>
                               <br/>
@@ -120,7 +120,7 @@ class LoginModal extends React.Component {
 }
 
 LoginModal.propTypes = {
-  reducer: PropTypes.object.isRequired,
+  // reducer: PropTypes.object.isRequired,
   action: PropTypes.object.isRequired,
 }
 

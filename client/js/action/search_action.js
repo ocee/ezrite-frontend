@@ -2,6 +2,9 @@ import $ from 'jquery'
 
 let SearchAction = (dispatch) => {
   return {
+    setViewState: function(view){
+      dispatch({type: 'VIEW_CHANGE', data: {view: view}})
+    },
     updateSearchText: function(searchText){
       dispatch({type: 'SEARCH_JOB', data:{searchText: searchText}})
     },
