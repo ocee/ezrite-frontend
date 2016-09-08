@@ -2,23 +2,24 @@ import 'babel-polyfill'
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
-// import {createStore} from 'redux'
-import configureStore from './../store/home_store'
-// import SearchReducer from './../reducer/search_reducer'
-import "../../style/home.less"
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { Router, Route, Redirect, Link, IndexRoute, browserHistory } from 'react-router'
 
+import configureStore from './../store/home_store'
+import "../../style/home.less"
 import Home from './home.jsx'
+import HomeBody from './body.jsx'
+import SearchBody from './../search/body.jsx'
 
 let store = configureStore(typeof userData === "undefined" ? {} : userData)
+const history = syncHistoryWithStore(browserHistory, store)
 
-class HomeApp extends React.Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Home />
-            </Provider>
-        );
-    }
-}
-
-render(<HomeApp/>, document.getElementById('app'))
+render(<Provider store={store}>
+          <Router history={history}>
+            <Route path="/" component={Home}>
+              <IndexRoute component={HomeBody}/>
+              <Route path="home" component={HomeBody}/>
+              <Route path="search" component={SearchBody}/>
+            </Route>
+          </Router>
+      </Provider>, document.getElementById('app'))

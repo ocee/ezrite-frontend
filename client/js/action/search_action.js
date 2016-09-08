@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 let SearchAction = (dispatch) => {
   return {
-    searchText: function(searchText){
+    updateSearchText: function(searchText){
       dispatch({type: 'SEARCH_JOB', data:{searchText: searchText}})
     },
     registrationNameChange: function(name){

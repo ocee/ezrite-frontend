@@ -28,12 +28,12 @@ class LoginModal extends React.Component {
 
     onRegisterSubmit(){
       const{action, reducer} = this.props
-      action.submitRegister(reducer.registrationData)
+      action.submitRegister(reducer.SearchReducer.registrationData)
     }
 
     onLoginSubmit(){
       const{action, reducer} = this.props
-      action.submitLogin(reducer.loginData)
+      action.submitLogin(reducer.SearchReducer.loginData)
     }
 
     onNameChange(event){

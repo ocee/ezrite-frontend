@@ -10,12 +10,12 @@ class Body extends React.Component {
 
     onSearchTextChange(event){
       const {action} = this.props
-      action.searchText(event.target.value)
+      action.updateSearchText(event.target.value)
     }
 
     onSubmitSearch(event){
       const {action, reducer} = this.props
-      action.submitSearch(reducer.searchData.searchText)
+      action.submitSearch(reducer.SearchReducer.searchData.searchText)
     }
 
     render() {

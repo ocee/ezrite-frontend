@@ -3,9 +3,10 @@ import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import Header from './../common/header.jsx'
 import LoginModal from './../common/login_modal.jsx'
-import Body from './body.jsx'
+
 import Footer from './../common/footer.jsx'
 import SearchAction from './../action/search_action'
+
 
 class Home extends React.Component {
     render() {
@@ -14,7 +15,7 @@ class Home extends React.Component {
           <div>
                 <LoginModal reducer={reducer} action={action}/>
                 <Header reducer={reducer} action={action}/>
-                <Body reducer={reducer} action={action}/>
+                  {React.cloneElement(this.props.children, {action, reducer})}
                 <Footer reducer={reducer} action={action}/>
           </div>
         )
