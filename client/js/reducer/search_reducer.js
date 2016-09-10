@@ -4,12 +4,17 @@ let searchReducer = {
   loginData: null,
   userData: null,
   viewData: null,
+  jobPostData: null
 }
 
 const SearchReducer = (state = searchReducer, action) => {
   let currentState = null;
 
   switch (action.type) {
+    case 'JOB_TITLE_CHANGE':
+    case 'JOB_DESCRIPTION_CHANGE':
+      currentState = state.jobPostData ? state.jobPostData : {}
+      return Object.assign({},state , {jobPostData: Object.assign(currentState, action.data)})
     case 'VIEW_CHANGE':
       currentState = state.viewData ? state.viewData : {}
       return Object.assign({},state , Object.assign(currentState, {viewData: action.data}))

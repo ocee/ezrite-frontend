@@ -8,6 +8,13 @@ let SearchAction = (dispatch) => {
     updateSearchText: function(searchText){
       dispatch({type: 'SEARCH_JOB', data:{searchText: searchText}})
     },
+    jobTitleChange: function(title){
+      console.log(title);
+      dispatch({type: 'JOB_TITLE_CHANGE', data:{title: title}})
+    },
+    jobDescriptionChange: function(description){
+      dispatch({type: 'JOB_DESCRIPTION_CHANGE', data:{description: description}})
+    },
     registrationNameChange: function(name){
       dispatch({type: 'REGISTRATION_NAME_CHANGE', data:{name: name}})
     },
@@ -22,6 +29,21 @@ let SearchAction = (dispatch) => {
     },
     loginPasswordChange: function(password){
       dispatch({type: 'LOGIN_PASSWORD_CHANGE', data:{password: password}})
+    },
+    postJob: function(title, description){
+      $.ajax({
+        url: '/api/job',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify({
+          title: title,
+          description: description
+        }),
+        success: response => {
+          dispatch({type: 'REGISTER_SUCCESS', data: response})
+        }
+      })
     },
     submitSearch: function(searchText){
       $.ajax({

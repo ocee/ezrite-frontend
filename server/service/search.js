@@ -20,5 +20,22 @@ module.exports = {
     } catch (error) {
       throw error;
     }
+  },
+
+  createJob: function*(title, description, userId, jobId){
+
+    try {
+      var result = null,
+      sqlStatement = `INSERT INTO job (job_id, owner_id, title, description) VALUES($1, $2, $3, $4) RETURNING job_id, owner_id, title, description;`;
+      result = yield db.executeScript(sqlStatement, [jobId, userId, title, description]);
+
+      if (result.length > 0) {
+        return result;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      throw error;
+    }
   }
 }

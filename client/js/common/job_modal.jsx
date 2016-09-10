@@ -5,6 +5,24 @@ class JobModal extends React.Component {
 
     constructor(props) {
         super(props)
+        this.postJob = this.postJob.bind(this)
+        this.onTitleChange = this.onTitleChange.bind(this)
+        this.onDescriptionChange = this.onDescriptionChange.bind(this)
+    }
+
+    postJob(){
+      const {action, jobPostData} = this.props
+      action.postJob(jobPostData.title, jobPostData.description)
+    }
+
+    onTitleChange(event){
+      const {action} = this.props
+      action.jobTitleChange(event.target.value)
+    }
+
+    onDescriptionChange(event){
+      const {action} = this.props
+      action.jobDescriptionChange(event.target.value)
     }
 
     render() {
@@ -15,10 +33,10 @@ class JobModal extends React.Component {
                       <h1>Post A Job!</h1>
                       <br/>
                         <h4>Title</h4>
-                        <div className="row" ><input type="text" className="col-xs-12" placeholder="job title..."></input></div>
+                        <div className="row" ><input type="text" className="col-xs-12" placeholder="job title..." onChange={this.onTitleChange}></input></div>
                         <h4>Description</h4>
-                        <div className="row"><textarea className="col-xs-12" placeholder="job description..."></textarea></div>
-                        <div className="row"><div className="text-right"><button type="button" className="btn btn-primary dropdown-menu-right">Post</button></div></div>
+                        <div className="row"><textarea className="col-xs-12" placeholder="job description..." onChange={this.onDescriptionChange}></textarea></div>
+                        <div className="row"><div className="text-right"><button type="button" className="btn btn-primary" onClick={this.postJob}>Post</button></div></div>
                     </div>
                 </div>
             </div>
