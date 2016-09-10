@@ -46,13 +46,7 @@ class Header extends React.Component {
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
+                      <button type="button" className="btn btn-primary header-button" data-toggle="modal" data-target="#job-modal">Post</button>
                     </li>
                     {userContainer}
                 </ul>

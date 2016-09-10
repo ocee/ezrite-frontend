@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 
 import Header from './../common/header.jsx'
 import LoginModal from './../common/login_modal.jsx'
+import JobModal from './../common/job_modal.jsx'
 import Footer from './../common/footer.jsx'
 import SearchAction from './../action/search_action'
 
@@ -24,6 +25,7 @@ class Home extends React.Component {
         return (
             <div>
                 <LoginModal loginData={loginData} registrationData={registrationData} userData={userData}  action={action}/>
+                <JobModal  action={action}/>
                 <Header userData={userData} action={action}/> {React.cloneElement(this.props.children, {...this.props})}
                 <Footer action={action}/>
             </div>
