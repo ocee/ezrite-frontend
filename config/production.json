@@ -1,0 +1,8 @@
+{
+  "server":{
+    "port": 80
+  },
+  "postgres": {
+      "connection_string": "postgres://tuan:tuan@localhost:5432/ezrite"
+  }
+}
