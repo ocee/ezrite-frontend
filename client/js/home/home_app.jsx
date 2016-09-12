@@ -11,7 +11,7 @@ import Home from './home.jsx'
 import HomeBody from './body.jsx'
 import SearchBody from './../search/body.jsx'
 
-let store = configureStore(typeof userData === "undefined" ? {} : userData)
+let store = configureStore(window.preloadedData)
 const history = syncHistoryWithStore(browserHistory, store)
 
 render(<Provider store={store}>

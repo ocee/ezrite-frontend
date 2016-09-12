@@ -9,7 +9,6 @@ let SearchAction = (dispatch) => {
       dispatch({type: 'SEARCH_JOB', data:{searchText: searchText}})
     },
     jobTitleChange: function(title){
-      console.log(title);
       dispatch({type: 'JOB_TITLE_CHANGE', data:{title: title}})
     },
     jobDescriptionChange: function(description){

@@ -11,13 +11,14 @@ import SearchReducer from './../reducer/search_reducer'
 
 
 
-export default function configureStore(preloadedState) {
+export default function configureStore(preloadedState = {}) {
+    const comboReducer = combineReducers({
+        SearchReducer,
+        routing: routerReducer
+    })
     const store = createStore(
-        combineReducers({
-            SearchReducer,
-            preloadedState,
-            routing: routerReducer
-        })
+        comboReducer,
+        preloadedState
     )
 
     return store

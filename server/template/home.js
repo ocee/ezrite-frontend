@@ -7,7 +7,7 @@ class HomeApp extends React.Component {
     let {userData} = this.props,
      preLoaded = null
     if(userData){
-        preLoaded = <script  type="text/javascript" dangerouslySetInnerHTML={{__html: 'var userData = ' + Utils.safeStringify({userData: userData})}} ></script>
+        preLoaded = <script  type="text/javascript" dangerouslySetInnerHTML={{__html: 'window.preloadedData = ' + Utils.safeStringify({SearchReducer: {userData: userData}})}} ></script>
     }
 
     return (
