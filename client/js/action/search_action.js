@@ -40,7 +40,7 @@ let SearchAction = (dispatch) => {
           description: description
         }),
         success: response => {
-          dispatch({type: 'REGISTER_SUCCESS', data: response})
+          dispatch({type: 'JOB_POST_SUCCESS', data: response})
         }
       })
     },

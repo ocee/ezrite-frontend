@@ -1,4 +1,5 @@
 import React, { PropTypes }  from 'react'
+import $ from 'jquery'
 import BootstrapJs from './../../style/bootstrap/js/bootstrap.min.js'
 
 class JobModal extends React.Component {
@@ -8,6 +9,14 @@ class JobModal extends React.Component {
         this.postJob = this.postJob.bind(this)
         this.onTitleChange = this.onTitleChange.bind(this)
         this.onDescriptionChange = this.onDescriptionChange.bind(this)
+    }
+
+    componentWillReceiveProps(nextProps){
+      const {jobPostData} = nextProps
+
+      if(jobPostData.job_id){
+        $('#job-modal').modal('hide');
+      }
     }
 
     postJob(){

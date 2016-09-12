@@ -30,7 +30,7 @@ module.exports = {
       result = yield db.executeScript(sqlStatement, [jobId, userId, title, description]);
 
       if (result.length > 0) {
-        return result;
+        return result[0];
       } else {
         return null;
       }

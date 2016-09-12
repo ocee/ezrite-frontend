@@ -1,4 +1,6 @@
 import React, { PropTypes }  from 'react'
+import $ from 'jquery'
+
 import BootstrapJs from './../../style/bootstrap/js/bootstrap.min.js'
 
 class LoginModal extends React.Component {
@@ -16,6 +18,14 @@ class LoginModal extends React.Component {
         this.onLoginEmailChange = this.onLoginEmailChange.bind(this)
         this.onLoginPasswordChange = this.onLoginPasswordChange.bind(this)
         this.onSetView = this.onSetView.bind(this)
+    }
+
+    componentWillReceiveProps(nextProps){
+      const {userData} = nextProps
+
+      if(userData){
+        $('#login-modal').modal('hide');
+      }
     }
 
     onRegisterClick(){
@@ -66,8 +76,6 @@ class LoginModal extends React.Component {
     }
 
     render() {
-      const {userData} = this.props
-      
       let registerContainer = <span>
                               <h1>Register A New Account</h1>
                               <br/>
