@@ -14,7 +14,7 @@ class JobModal extends React.Component {
     componentWillReceiveProps(nextProps){
       const {jobPostData} = nextProps
 
-      if(jobPostData.job_id){
+      if(jobPostData && jobPostData.job_id){
         $('#job-modal').modal('hide');
       }
     }

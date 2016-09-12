@@ -21,12 +21,13 @@ class Home extends React.Component {
 
     }
     render() {
-        const {loginData, registrationData, userData, jobPostData, action} = this.props
+        const {loginData, registrationData, userData, jobPostData, searchData, action} = this.props
         return (
             <div>
                 { userData ? <LoginModal loginData={loginData} registrationData={registrationData} userData={userData} action={action}/> : null }
                 <JobModal  action={action} jobPostData={jobPostData} userData={userData}/>
-                <Header userData={userData} action={action}/> {React.cloneElement(this.props.children, {...this.props})}
+                <Header userData={userData} action={action} searchData={searchData}/>
+                {React.cloneElement(this.props.children, {...this.props})}
                 <Footer action={action}/>
             </div>
         )
