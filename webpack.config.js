@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var AssetsPlugin = require('assets-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'client');
@@ -11,7 +12,7 @@ var config = {
     },
     output: {
         path: BUILD_DIR,
-        filename: '[name].js'
+        filename: '[name].[hash].js'
     },
     module: {
         loaders: [{
@@ -46,7 +47,8 @@ var config = {
         }]
     },
     plugins: [
-        new ExtractTextPlugin("[name].css")
+        new ExtractTextPlugin("[name].[hash].css"),
+        new AssetsPlugin({path: BUILD_DIR})
     ]
 };
 

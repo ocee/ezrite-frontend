@@ -34,7 +34,6 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-    // reducer: PropTypes.object.isRequired,
     action: PropTypes.object.isRequired
 }
 

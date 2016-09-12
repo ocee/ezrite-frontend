@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import Utils from './../../common/utils'
+import assets from './../../public/webpack-assets'
 
 class HomeApp extends React.Component {
   render() {
@@ -14,13 +15,13 @@ class HomeApp extends React.Component {
     <html>
       <head>
         <meta charSet="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="home_app.css"/>
+        <link rel="stylesheet" type="text/css" href={assets.home_app.css}/>
         {preLoaded}
         <title>EZrite!</title>
       </head>
       <body>
         <div id="app"></div>
-        <script src="home_app.js" type="text/javascript"></script>
+        <script src={assets.home_app.js} type="text/javascript"></script>
       </body>
     </html>)
   }
