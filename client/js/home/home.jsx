@@ -24,7 +24,7 @@ class Home extends React.Component {
         const {loginData, registrationData, userData, jobPostData, searchData, action} = this.props
         return (
             <div>
-                { userData ? <LoginModal loginData={loginData} registrationData={registrationData} userData={userData} action={action}/> : null }
+                <LoginModal loginData={loginData} registrationData={registrationData} userData={userData} action={action}/>
                 <JobModal  action={action} jobPostData={jobPostData} userData={userData}/>
                 <Header userData={userData} action={action} searchData={searchData}/>
                 {React.cloneElement(this.props.children, {...this.props})}
