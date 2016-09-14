@@ -29,6 +29,12 @@ let SearchAction = (dispatch) => {
     loginPasswordChange: function(password){
       dispatch({type: 'LOGIN_PASSWORD_CHANGE', data:{password: password}})
     },
+    getJobDetail: function(jobId){
+
+    },
+    setJobDetail: function(job){
+      dispatch({type: 'GET_JOB_DETAIL', data:job})
+    },
     postJob: function(title, description){
       $.ajax({
         url: '/api/job',
